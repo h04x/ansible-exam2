@@ -1,0 +1,16 @@
+- name: Install yum-utils
+  yum:
+    name: yum-utils
+- name: Adding docker repo
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+- name: Install docker
+  yum:
+    name: docker-ce
+- name: Enable docker
+  ansible.builtin.systemd:
+    name: docker
+    enabled: yes
+- name: Start docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started

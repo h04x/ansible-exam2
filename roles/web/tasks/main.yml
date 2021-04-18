@@ -1,0 +1,9 @@
+- include_role:
+    name: docker
+- name: Pull image
+  shell: docker pull h04x3r/exam-app
+- name: Kill container if it run
+  shell: if docker ps | grep {{inventory_hostname}}; then  docker kill {{inventory_hostname}} && docker rm {{inventory_hostname}}; fi 
+- name: Start container
+  shell: docker run -d -p {{app_port}}:5000 --name {{inventory_hostname}} --restart always h04x3r/exam-app
+

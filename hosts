@@ -1,0 +1,17 @@
+all:
+  hosts:
+    balancer:
+      ansible_host: 10.0.0.81
+  children:
+    web:
+      hosts:
+        web1:
+          ansible_host: 10.0.0.81
+          app_port: 5001
+        web2:
+          ansible_host: 10.0.0.81
+          app_port: 5002
+        web3:
+          ansible_host: 10.0.0.81
+          app_port: 5003
+
