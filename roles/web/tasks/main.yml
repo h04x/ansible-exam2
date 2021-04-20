@@ -3,7 +3,7 @@
 - name: Login to dockerhub
   shell: docker login -u {{hub_login}} -p {{hub_password}}
 - name: Pull image
-  shell: docker pull h04x3r/exam-app
+  shell: docker pull {{imagename}}
 - name: Kill container if it run
   shell: if docker ps | grep {{inventory_hostname}}; then  docker kill {{inventory_hostname}} && docker rm {{inventory_hostname}}; fi 
 - name: Start container
