@@ -4,8 +4,10 @@
   shell: docker login -u {{hub_login}} -p {{hub_password}}
 - name: Pull image
   shell: docker pull {{imagename}}
-- name: Kill container if it run
-  shell: if docker ps | grep {{inventory_hostname}}; then  docker kill {{inventory_hostname}} && docker rm {{inventory_hostname}}; fi 
+- name: Stop running container
+  shell: if docker ps | grep {{inventory_hostname}}; then  docker kill {{inventory_hostname}}; fi 
+- name: Remove stoped container
+  shell: if docker ps -a | grep {{inventory_hostname}}; then docker rm {{inventory_hostname}}; fi
 - name: Start container
   shell: docker run -d -p {{app_port}}:5000 --name {{inventory_hostname}} --restart always h04x3r/exam-app
 
