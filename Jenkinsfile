@@ -5,13 +5,7 @@ pipeline {
     }
     agent any
     stages {
-        stage('Clone repo') {
-            steps {
-                sh """
-                    git clone https://github.com/h04x/ansible-exam2.git .
-                """
-            }
-        }
+
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'h04x3r-dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
