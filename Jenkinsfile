@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                echo 'Cloning..'
                 sh """
                     git clone https://github.com/h04x/ansible-exam2.git .
                 """
