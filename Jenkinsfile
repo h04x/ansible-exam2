@@ -5,7 +5,6 @@ pipeline {
     }
     agent any
     stages {
-
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'h04x3r-dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
