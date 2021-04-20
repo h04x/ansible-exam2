@@ -1,5 +1,7 @@
 - include_role:
     name: docker
+- name: Login to dockerhub
+  shell: docker login -u {{hub_login}} -p {{hub_password}}
 - name: Pull image
   shell: docker pull h04x3r/exam-app
 - name: Kill container if it run

@@ -1,8 +1,0 @@
----
-- hosts: web
-  #sudo: yes
-  roles:
-    - web
-- hosts: balancer
-  roles:
-    - balancer
