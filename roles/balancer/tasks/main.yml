@@ -1,7 +1,5 @@
 - include_role:
     name: docker
-- name: Login to dockerhub
-  shell: docker login -u {{hub_login}} -p {{hub_password}}
 - name: Pull image
   shell: docker pull nginx
 - name: Copy nginx.conf
@@ -11,4 +9,4 @@
 - name: Remove stoped container
   shell: if docker ps -a | grep {{inventory_hostname}}; then docker rm {{inventory_hostname}}; fi
 - name: Start nginx
-  shell: docker run -d --name {{inventory_hostname}} -p 88:80 -v /tmp/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
+  shell: docker run -d --name {{inventory_hostname}} -p 88:80 -v /tmp/nginx.conf:/etc/nginx/nginx.conf:ro nginx
